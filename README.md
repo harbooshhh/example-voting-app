@@ -1,6 +1,6 @@
 [![Build Status](http://harboosh.myqnapcloud.com:8080/buildStatus/icon?job=Instavote%2Fworker-build)](http://harboosh.myqnapcloud.com:8080/job/Instavote/job/worker-build/)
 
-Example Voting App
+Example Voting App 1.1
 =========
 
 Getting started
