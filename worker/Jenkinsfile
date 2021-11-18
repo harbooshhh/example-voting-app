@@ -1,0 +1,51 @@
+
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "maven 3.6.1"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+		echo 'compiling worker app'
+                 dir('worker')
+                       {
+			sh 'mvn compile'
+                         }
+
+            }
+
+        stage('test') {
+            steps {
+		echo 'testing workrer app'
+		dir('worker')
+                       {
+                        echo 'running test'
+                         }
+            }
+        stage('Package') {
+            steps {
+		echo 'packaging worker app'
+		dir('worker')
+                       {
+                        echo 'running packaging'
+                         }
+            }
+
+ 
+
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+        }
+    }
+}
+
