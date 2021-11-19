@@ -16,7 +16,7 @@ pipeline {
 			sh 'mvn compile'
                          }
 
-            }
+            }}
 
         stage('test') {
             steps {
@@ -25,7 +25,7 @@ pipeline {
                        {
                         echo 'running test'
                          }
-            }
+            }}
         stage('Package') {
             steps {
 		echo 'packaging worker app'
@@ -34,6 +34,7 @@ pipeline {
                         echo 'running packaging'
                          }
             }
+		}
 
  
 
@@ -46,6 +47,3 @@ pipeline {
                 }
             }
         }
-    }
-}
-
